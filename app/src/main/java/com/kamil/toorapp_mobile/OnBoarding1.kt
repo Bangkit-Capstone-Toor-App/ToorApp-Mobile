@@ -32,5 +32,9 @@ class OnBoarding1 : Fragment() {
         binding.btnNext.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_onBoarding12_to_onBoarding22)
         )
+
+        binding.btnSkip.setOnClickListener {
+            Navigation.createNavigateOnClickListener(R.id.action_onBoarding12_to_loginActivity)
+        }
     }
 }

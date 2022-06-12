@@ -41,6 +41,11 @@ class LoginActivity : AppCompatActivity() {
         binding.signInButton.setOnClickListener{
             signIn()
         }
+
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this,HomePage::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun signIn() {

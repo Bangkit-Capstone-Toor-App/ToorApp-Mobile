@@ -13,10 +13,27 @@
         <action
             android:id="@+id/action_onBoarding12_to_onBoarding22"
             app:destination="@id/onBoarding22" />
+        <action
+            android:id="@+id/action_onBoarding12_to_loginActivity"
+            app:destination="@id/loginActivity" />
     </fragment>
     <fragment
         android:id="@+id/onBoarding22"
         android:name="com.kamil.toorapp_mobile.OnBoarding2"
         android:label="fragment_on_boarding2"
-        tools:layout="@layout/fragment_on_boarding2" />
+        tools:layout="@layout/fragment_on_boarding2" >
+        <action
+            android:id="@+id/action_onBoarding22_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.kamil.toorapp_mobile.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <activity
+        android:id="@+id/homePage"
+        android:name="com.kamil.toorapp_mobile.HomePage"
+        android:label="activity_home_page"
+        tools:layout="@layout/activity_home_page" />
 </navigation>
