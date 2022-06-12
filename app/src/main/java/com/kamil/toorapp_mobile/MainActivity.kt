@@ -21,9 +21,6 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val firebaseUser = auth.currentUser
         if (firebaseUser == null) {
-            // Not signed in, launch the Login activity
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
             return
         }
     }

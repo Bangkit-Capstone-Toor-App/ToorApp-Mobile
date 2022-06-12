@@ -29,7 +29,7 @@ class OnBoarding1 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.imageView5.setOnClickListener(
+        binding.btnNext.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_onBoarding12_to_onBoarding22)
         )
     }
