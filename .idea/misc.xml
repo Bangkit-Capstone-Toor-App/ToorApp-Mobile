@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Code/AndroidStudioProject/ToorApp-Mobile/app/src/main/res/layout/activity_home_page.xml" value="0.1" />
+        <entry key="..\:/Code/AndroidStudioProject/ToorApp-Mobile/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Code/AndroidStudioProject/ToorApp-Mobile/app/src/main/res/layout/activity_main.xml" value="0.17426545086119555" />
+        <entry key="..\:/Code/AndroidStudioProject/ToorApp-Mobile/app/src/main/res/layout/fragment_dashboard.xml" value="0.17426545086119555" />
+        <entry key="..\:/Code/AndroidStudioProject/ToorApp-Mobile/app/src/main/res/layout/fragment_notifications.xml" value="0.17426545086119555" />
+        <entry key="..\:/Code/AndroidStudioProject/ToorApp-Mobile/app/src/main/res/layout/fragment_on_boarding1.xml" value="0.1" />
         <entry key="..\:/Users/Arief/AndroidStudioProjects/ToorApp-Mobile/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.2055" />
         <entry key="..\:/Users/Arief/AndroidStudioProjects/ToorApp-Mobile/app/src/main/res/drawable/image1onboarding.xml" value="0.195" />
         <entry key="..\:/Users/Arief/AndroidStudioProjects/ToorApp-Mobile/app/src/main/res/layout/activity_home_page.xml" value="0.17391304347826086" />

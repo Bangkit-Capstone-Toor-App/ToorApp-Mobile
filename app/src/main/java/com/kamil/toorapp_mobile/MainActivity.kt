@@ -3,10 +3,17 @@ package com.kamil.toorapp_mobile
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.kamil.toorapp_mobile.databinding.ActivityMainBinding
+import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.AsyncHttpResponseHandler
+import cz.msebera.android.httpclient.Header
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +33,11 @@ class MainActivity : AppCompatActivity() {
 //            finish()
             return
         }
+
+
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
