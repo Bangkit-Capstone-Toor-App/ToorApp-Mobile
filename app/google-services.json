@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "958047126181",
+    "project_id": "toorapp-mobile",
+    "storage_bucket": "toorapp-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958047126181:android:ee1bb920e56534783e434c",
+        "android_client_info": {
+          "package_name": "com.kamil.toorapp_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958047126181-eghu1r6a687mavgauejve3elbhv9aok6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kamil.toorapp_mobile",
+            "certificate_hash": "12e0b8cf170dbd92224540ff695b459b56497dfe"
+          }
+        },
+        {
+          "client_id": "958047126181-fc1romktru7k68hj9lv2mfr6p5tekp1c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTyFx1RIwLF3LyIeRsFEfKDKD7HqFLuZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958047126181-fc1romktru7k68hj9lv2mfr6p5tekp1c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
