@@ -56,12 +56,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        getDataAPI("1")
         getDataAPI()
     }
 
     private fun getDataAPI() {
-        val client = ApiConfig.getApiService().getDestination(RESTAURANT_ID)
+        val client = ApiConfig.getApiService().getDestinationSpesific(DESTINATION_ID)
         client.enqueue(object : Callback<ResponseDestination> {
             override fun onResponse(
                 call: Call<ResponseDestination>,
@@ -70,9 +69,6 @@ class LoginActivity : AppCompatActivity() {
                 if (responseDestination.isSuccessful) {
                     val responseBody = responseDestination.body()
                     if (responseBody != null) {
-//                        setRestaurantData(responseBody.sex)
-                        //setReviewData(responseBody.restaurant.customerReviews)
-//                        binding.tvTitle.text = responseBody.jenisWisata
                         supportActionBar?.title = responseBody.golonganWisata
 
                     }
@@ -85,32 +81,6 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
-//    private fun getDataAPI(id: String) {
-//        val client = AsyncHttpClient()
-//        val url = "http://34.101.52.74:3000/api/listChoices/$id"
-//        client.get(url, object : AsyncHttpResponseHandler() {
-//            override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
-//                // Jika koneksi berhasil
-//
-//                val result = String(responseBody)
-//                Log.d("getDataFromAPI", result)
-//                try {
-//                    val responseObject = JSONObject(result)
-//                    val quote = responseObject.getString("kelompok_wisata")
-//                    val author = responseObject.getString("tipe_wisata")
-//                    //val author = responseObject.getInt("bill_depth_mm")
-//                    supportActionBar?.title = quote
-//                } catch (e: Exception) {
-//                    Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_SHORT).show()
-//                    e.printStackTrace()
-//                }
-//            }
-//            override fun onFailure(statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
-//                // Jika koneksi gagal
-//            }
-//        })
-//    }
-
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         resultLauncher.launch(signInIntent)
@@ -164,7 +134,7 @@ class LoginActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "LoginActivity"
-        private const val RESTAURANT_ID = "1"
+        private const val DESTINATION_ID = "1"
     }
 
 }

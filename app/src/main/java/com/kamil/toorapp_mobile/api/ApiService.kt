@@ -6,7 +6,7 @@ import retrofit2.http.Path
 
 interface ApiService {
     @GET("api/listChoices/{id}")
-    fun getDestination(
+    fun getDestinationSpesific(
         @Path("id") id: String
     ): Call<ResponseDestination>
 }
