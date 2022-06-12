@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -15,6 +16,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.kamil.toorapp_mobile.databinding.ActivityLoginBinding
+import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.AsyncHttpResponseHandler
+import cz.msebera.android.httpclient.Header
+import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity() {
 
@@ -46,6 +51,34 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this,HomePage::class.java)
             startActivity(intent)
         }
+
+        getDataAPI("1")
+    }
+
+    private fun getDataAPI(id: String) {
+        val client = AsyncHttpClient()
+        val url = "http://34.101.52.74:3000/api/listChoices/$id"
+        client.get(url, object : AsyncHttpResponseHandler() {
+            override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
+                // Jika koneksi berhasil
+
+                val result = String(responseBody)
+                Log.d("getDataFromAPI", result)
+                try {
+                    val responseObject = JSONObject(result)
+                    val quote = responseObject.getString("kelompok_wisata")
+                    val author = responseObject.getString("tipe_wisata")
+                    //val author = responseObject.getInt("bill_depth_mm")
+                    supportActionBar?.title = quote
+                } catch (e: Exception) {
+                    Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_SHORT).show()
+                    e.printStackTrace()
+                }
+            }
+            override fun onFailure(statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
+                // Jika koneksi gagal
+            }
+        })
     }
 
     private fun signIn() {
