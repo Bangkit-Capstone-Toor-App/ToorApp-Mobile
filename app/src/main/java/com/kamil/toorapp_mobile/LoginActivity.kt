@@ -52,12 +52,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        getDataAPI()
+        getDataAPI("1")
     }
 
-    private fun getDataAPI() {
+    private fun getDataAPI(id: String) {
         val client = AsyncHttpClient()
-        val id = "1"
         val url = "http://34.101.52.74:3000/api/listChoices/$id"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
