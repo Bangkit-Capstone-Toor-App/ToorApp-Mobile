@@ -15,11 +15,15 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.kamil.toorapp_mobile.api.ApiConfig
+import com.kamil.toorapp_mobile.api.ResponseDestination
 import com.kamil.toorapp_mobile.databinding.ActivityLoginBinding
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
 
 class LoginActivity : AppCompatActivity() {
 
@@ -52,35 +56,31 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        getDataAPI("1")
+        getDataAPI()
     }
 
-    private fun getDataAPI(id: String) {
-        val client = AsyncHttpClient()
-        val url = "http://34.101.52.74:3000/api/listChoices/$id"
-        client.get(url, object : AsyncHttpResponseHandler() {
-            override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
-                // Jika koneksi berhasil
+    private fun getDataAPI() {
+        val client = ApiConfig.getApiService().getDestinationSpesific(DESTINATION_ID)
+        client.enqueue(object : Callback<ResponseDestination> {
+            override fun onResponse(
+                call: Call<ResponseDestination>,
+                responseDestination: retrofit2.Response<ResponseDestination>
+            ) {
+                if (responseDestination.isSuccessful) {
+                    val responseBody = responseDestination.body()
+                    if (responseBody != null) {
+                        supportActionBar?.title = responseBody.golonganWisata
 
-                val result = String(responseBody)
-                Log.d("getDataFromAPI", result)
-                try {
-                    val responseObject = JSONObject(result)
-                    val quote = responseObject.getString("kelompok_wisata")
-                    val author = responseObject.getString("tipe_wisata")
-                    //val author = responseObject.getInt("bill_depth_mm")
-                    supportActionBar?.title = quote
-                } catch (e: Exception) {
-                    Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_SHORT).show()
-                    e.printStackTrace()
+                    }
+                } else {
+                    Log.e(TAG, "onFailure: ${responseDestination.message()}")
                 }
             }
-            override fun onFailure(statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
-                // Jika koneksi gagal
+            override fun onFailure(call: Call<ResponseDestination>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message}")
             }
         })
     }
-
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         resultLauncher.launch(signInIntent)
@@ -134,5 +134,7 @@ class LoginActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "LoginActivity"
+        private const val DESTINATION_ID = "1"
     }
+
 }
